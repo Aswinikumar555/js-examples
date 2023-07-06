@@ -92,10 +92,10 @@ let result = arraEx.priFilter(isPrime);
 console.log("priFilter result ", result);
 
 function obPrint(...args) {
-  console.log("obPrint this ",this);
-  console.log("obPrint args ",...args);
+  console.log("obPrint this ", this);
+  console.log("obPrint args ", ...args);
 }
 
 Object.prototype.obPrint = obPrint;
 
-objP.obPrint("hellow", "world")
+objP.obPrint("hellow", "world");
