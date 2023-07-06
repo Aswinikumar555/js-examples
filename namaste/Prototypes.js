@@ -50,3 +50,43 @@ let myBindCal = getName.myBind(objP, "aswin", "kumar");
 myBindCal("bhimavarapu");
 
 console.log("Protitypes end --");
+
+let arraEx = [1, 2, 3];
+
+function printElem() {
+  console.log("printElem this ", this);
+  let ar = this;
+  ar.push(10);
+  return ar;
+}
+
+Array.prototype.printElem = printElem;
+
+console.log(arraEx.printElem());
+
+function priFilter(...args) {
+  const result = [];
+  console.log("priFilter this ", this);
+  console.log("priFilter args ", args);
+  let func = args[0];
+  for (let index = 0; index < this.length; index++) {
+    const element = this[index];
+    let val = func(element);
+    if (val) {
+      result.push(element);
+    }
+  }
+  return result;
+}
+
+function isPrime(value) {
+  console.log("isPrime value ", value);
+  if (value % 2 === 0) {
+    return value;
+  }
+}
+
+Array.prototype.priFilter = priFilter;
+
+let result = arraEx.priFilter(isPrime);
+console.log("priFilter result ", result);
