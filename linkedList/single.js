@@ -116,6 +116,7 @@ class SingleLinkedList {
     let temp = prevNode.next;
     prevNode.next = temp.next;
     this.length--;
+    return true;
   }
 }
 
