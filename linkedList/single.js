@@ -104,7 +104,18 @@ class SingleLinkedList {
 
     prevNode.next = newNode;
     newNode.next = temp;
+    this.length++;
     return true;
+  }
+
+  delete(index) {
+    if (!this.head || index > this.length) {
+      return false;
+    }
+    let prevNode = this.get(index - 1);
+    let temp = prevNode.next;
+    prevNode.next = temp.next;
+    this.length--;
   }
 }
 
