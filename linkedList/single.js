@@ -52,6 +52,7 @@ class SingleLinkedList {
   shift() {
     let currentNode = this.head;
     this.head = currentNode.next;
+    this.length--;
   }
 
   unshift(val) {
@@ -112,11 +113,37 @@ class SingleLinkedList {
     if (!this.head || index > this.length) {
       return false;
     }
+    if (index === 0) {
+      this.shift();
+      return true;
+    }
+    if (this.length === index) {
+      this.pop();
+      return true;
+    }
     let prevNode = this.get(index - 1);
     let temp = prevNode.next;
     prevNode.next = temp.next;
     this.length--;
-    return true;
+  }
+
+  reverse() {
+    if (!this.head) {
+      return "Empty";
+    }
+    let node = this.head;
+    let prev = null;
+    let next = null;
+
+    this.head = this.tail;
+    this.tail = node;
+
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
   }
 }
 
