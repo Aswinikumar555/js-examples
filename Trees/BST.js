@@ -50,12 +50,39 @@ class BST {
     return values;
   }
 
-  depthFirstInOrder() {
+  depthFirstPreOrder() {
     let valuesList = [];
 
     function traverse(node) {
       valuesList.push(node.val);
       if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+
+    return valuesList;
+  }
+
+  depthFirstPostrder() {
+    let valuesList = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      valuesList.push(node.val);
+    }
+
+    traverse(this.root);
+
+    return valuesList;
+  }
+  depthFirstInrder() {
+    let valuesList = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      valuesList.push(node.val);
       if (node.right) traverse(node.right);
     }
 
