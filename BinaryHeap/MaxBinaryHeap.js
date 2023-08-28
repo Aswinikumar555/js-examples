@@ -2,6 +2,9 @@
 
 // to know the parent left child formula ((2 * index) + 1)
 // to know the parent right child formula ((2 * index) + 2)
+
+// Note: this Algo useful for priority queue
+
 class MaxBinaryHeap {
   constructor() {
     this.values = [41, 39, 33, 18, 27, 12];
@@ -54,7 +57,7 @@ class MaxBinaryHeap {
       console.log("idx ", idx);
 
       console.log(this.values[leftIndex], this.values[rightIndex]);
-      
+
       if (leftIndex < this.values.length) {
         leftVal = this.values[leftIndex];
 
