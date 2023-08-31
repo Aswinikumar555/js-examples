@@ -24,6 +24,12 @@ class Graph {
     return this.adjacencyList;
   }
 
+  removeEdge(v1, v2) {
+    this.adjacencyList[v1] = this.adjacencyList[v1].filter((val) => val != v2);
+    this.adjacencyList[v2] = this.adjacencyList[v2].filter((val) => val != v1);
+    return this.adjacencyList;
+  }
+
   DFSTravasrse(start) {
     const visted = {},
       result = [];
@@ -40,6 +46,26 @@ class Graph {
         }
       });
     })(start);
+
+    return result;
+  }
+
+  BFSTravasrse(start) {
+    const visted = {},
+      result = [],
+      queue = [];
+
+    queue.push(start);
+
+    while (queue.length > 0) {
+      let itrVal = queue.shift();
+      if (!visted[itrVal]) result.push(itrVal);
+      visted[itrVal] = true;
+
+      this.adjacencyList[itrVal].forEach((val) => {
+        if (!visted[val]) queue.push(val);
+      });
+    }
 
     return result;
   }
