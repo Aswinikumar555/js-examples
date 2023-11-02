@@ -42,7 +42,7 @@ class MaxBinaryHeap {
     return lastVal;
   }
 
-  bubbleDown() {
+  bubbleUp() {
     let idx = 0;
     let elem = this.values[idx];
 
